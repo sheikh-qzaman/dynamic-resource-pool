@@ -11,11 +11,14 @@ import hudson.model.Descriptor;
 
 public class ResourcePool extends AbstractDescribableImpl<ResourcePool>{
 	private List<Resource> resources = new ArrayList<Resource>();
+	private String name;
+	private String description;
 	private String type;
 
 	@DataBoundConstructor
-	public ResourcePool(List<Resource> resources, String type) {
-		this.resources = resources;
+	public ResourcePool(String name, String description, String type) {
+		this.name = name;
+		this.description = description;
 		this.type = type;
 	}
 	
@@ -23,12 +26,20 @@ public class ResourcePool extends AbstractDescribableImpl<ResourcePool>{
 		return resources;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
 	public String getType() {
 		return type;
 	}
 
 	@Extension
-    public static class DescriptorImpl extends Descriptor<Resource> {
+    public static class DescriptorImpl extends Descriptor<ResourcePool> {
         public String getDisplayName() { return ""; }
     }
 }

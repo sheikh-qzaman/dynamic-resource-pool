@@ -20,7 +20,4 @@
 	<f:entry title="${%Type}" field="type">
 		<f:textbox/>
 	</f:entry>
-	<f:entry title="${%IP Address}" field="ipAddress">
-		<f:textbox/>
-	</f:entry>
 </j:jelly>
