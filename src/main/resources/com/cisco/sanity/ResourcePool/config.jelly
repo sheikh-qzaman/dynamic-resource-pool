@@ -1,0 +1,26 @@
+<?jelly escape-by-default='true'?>
+<!--
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Copyright (c) 2016, Sheikh Qumruzzaman All rights reserved.         *
+ *                                                                     *
+ * This file is part of the Jenkins Dynamic Resource Pool and is   *
+ * published under the MIT license.                                    *
+ *                                                                     *
+ * See the "LICENSE.txt" file for more information.                    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ -->
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
+	xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+	<f:entry title="${%Name}" field="name">
+		<f:textbox/>
+	</f:entry>
+	<f:entry title="${%Description}" field="description">
+		<f:textbox/>
+	</f:entry>
+	<f:entry title="${%Type}" field="type">
+		<f:textbox/>
+	</f:entry>
+	<f:entry title="${%IP Address}" field="ipAddress">
+		<f:textbox/>
+	</f:entry>
+</j:jelly>
