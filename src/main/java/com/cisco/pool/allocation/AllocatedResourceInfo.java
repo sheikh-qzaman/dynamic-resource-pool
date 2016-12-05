@@ -1,4 +1,4 @@
-package com.cisco.sanity;
+package com.cisco.pool.allocation;
 
 import java.io.Serializable;
 

@@ -1,8 +1,11 @@
-package com.cisco.sanity;
+package com.cisco.pool.allocation;
 
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
+
+import com.cisco.pool.manager.Resource;
+import com.cisco.pool.manager.ResourcePoolManager;
 
 import hudson.Extension;
 import hudson.Util;
@@ -14,11 +17,11 @@ import hudson.model.JobPropertyDescriptor;
 import hudson.model.Descriptor.FormException;
 import net.sf.json.JSONObject;
 
-public class JobResourceAllocator extends JobProperty<Job<?,?>>{
+public class JobResourceAllocation extends JobProperty<Job<?,?>>{
 	private String name;
 	
 	@DataBoundConstructor
-	public  JobResourceAllocator(String name) {
+	public  JobResourceAllocation(String name) {
 		super();
 		this.name = name;
 	}
@@ -42,7 +45,7 @@ public class JobResourceAllocator extends JobProperty<Job<?,?>>{
 		}
 		
 		@Override
-		public JobResourceAllocator newInstance(StaplerRequest req, JSONObject formData) throws FormException {
+		public JobResourceAllocation newInstance(StaplerRequest req, JSONObject formData) throws FormException {
 			if (formData.isNullObject()) {
 				return null;
 			}
@@ -52,7 +55,7 @@ public class JobResourceAllocator extends JobProperty<Job<?,?>>{
 			}
 			String poolName = json.getString("name");
 			
-			return new JobResourceAllocator(poolName);
+			return new JobResourceAllocation(poolName);
 		}
 		
 		public static AutoCompletionCandidates doAutoCompleteName(@QueryParameter String value) {

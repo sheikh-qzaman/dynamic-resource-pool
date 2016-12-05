@@ -1,4 +1,4 @@
-package com.cisco.sanity;
+package com.cisco.pool;
 
 import hudson.model.Job;
 import hudson.model.Run;
