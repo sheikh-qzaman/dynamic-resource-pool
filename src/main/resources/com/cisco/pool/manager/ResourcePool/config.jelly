@@ -20,4 +20,14 @@
 	<f:entry title="${%Type}" field="type">
 		<f:textbox/>
 	</f:entry>
+	<f:entry title="Resources">
+		<f:repeatable field="resources" header="Resource" minimum="0" add="Add Resource">
+			<table width="100%">
+				<st:include page="config.jelly" class="com.cisco.pool.manager.Resource"/>
+				<f:entry title="">
+					<div align="right"><f:repeatableDeleteButton/></div>
+				</f:entry>
+			</table>
+		</f:repeatable>
+	</f:entry>
 </j:jelly>

@@ -14,22 +14,21 @@ import net.sf.json.JSONObject;
 @Extension
 public class ResourcePoolManager extends GlobalConfiguration{
 
-	private List<Resource> resources; 
+	private List<ResourcePool> resourcePools;
 
 	public ResourcePoolManager() {
-		this.resources = new ArrayList<Resource>();
+		this.resourcePools = new ArrayList<ResourcePool>();
 		load();
-		System.out.println(resources.toString());
 	}
 
-	public List<Resource> getResources() {
-		return resources;
+	public List<ResourcePool> getResourcePools() {
+		return this.resourcePools;
 	}
 
 	@Override
 	public boolean configure(StaplerRequest req, JSONObject json) throws FormException {
 		try {
-			List<Resource> newResouces = req.bindJSONToList( Resource.class, json.get("resources"));
+			List<ResourcePool> newResoucePools = req.bindJSONToList( ResourcePool.class, json.get("resourcePools"));
 			/*for (Resource r : newResouces) {
 				Resource old = fromName(r.getName());
 				if (old != null) {
@@ -37,7 +36,7 @@ public class ResourcePoolManager extends GlobalConfiguration{
 					r.setQueued(r.getQueueItemId(), r.getQueueItemProject());
 				}
 			}*/
-			resources = newResouces;
+			this.resourcePools = newResoucePools;
 			save();
 			return true;
 		} catch (JSONException e) {

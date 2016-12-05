@@ -1,5 +1,6 @@
 package com.cisco.pool.allocation;
 
+import com.cisco.pool.manager.ResourcePool;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
@@ -62,7 +63,7 @@ public class JobResourceAllocation extends JobProperty<Job<?,?>>{
 			AutoCompletionCandidates c = new AutoCompletionCandidates();
 
 			if (value != null) {
-				for (Resource r : ResourcePoolManager.get().getResources()) {
+				for (ResourcePool r : ResourcePoolManager.get().getResourcePools()) {
 					if (r.getName().startsWith(value))
 						c.add(r.getName());
 				}

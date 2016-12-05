@@ -10,20 +10,17 @@ import hudson.model.AbstractDescribableImpl;
 import hudson.model.Descriptor;
 
 public class ResourcePool extends AbstractDescribableImpl<ResourcePool>{
-	private List<Resource> resources = new ArrayList<Resource>();
 	private String name;
 	private String description;
 	private String type;
+	private List<Resource> resources = new ArrayList<Resource>();
 
 	@DataBoundConstructor
-	public ResourcePool(String name, String description, String type) {
+	public ResourcePool(String name, String description, String type, List<Resource> resources) {
 		this.name = name;
 		this.description = description;
 		this.type = type;
-	}
-	
-	public List<Resource> getResources() {
-		return resources;
+		this.resources = resources;
 	}
 
 	public String getName() {
@@ -36,6 +33,10 @@ public class ResourcePool extends AbstractDescribableImpl<ResourcePool>{
 
 	public String getType() {
 		return type;
+	}
+
+	public List<Resource> getResources() {
+		return resources;
 	}
 
 	@Extension
