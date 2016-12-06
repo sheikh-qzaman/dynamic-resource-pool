@@ -1,21 +1,17 @@
-package com.cisco.pool.allocation;
+package com.cisco.pool.config.project;
 
-import com.cisco.pool.manager.ResourcePool;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
-import com.cisco.pool.manager.Resource;
-import com.cisco.pool.manager.ResourcePoolManager;
+import com.cisco.pool.config.system.ResourcePool;
+import com.cisco.pool.config.system.ResourcePoolManager;
 
 import hudson.Extension;
-import hudson.Util;
-import hudson.model.AbstractProject;
 import hudson.model.AutoCompletionCandidates;
 import hudson.model.Job;
 import hudson.model.JobProperty;
 import hudson.model.JobPropertyDescriptor;
-import hudson.model.Descriptor.FormException;
 import net.sf.json.JSONObject;
 
 import java.util.ArrayList;

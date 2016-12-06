@@ -1,4 +1,4 @@
-package com.cisco.pool.allocation;
+package com.cisco.pool.config.project;
 
 import hudson.Extension;
 import hudson.model.AbstractDescribableImpl;

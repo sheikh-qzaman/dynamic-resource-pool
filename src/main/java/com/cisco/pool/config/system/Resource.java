@@ -1,7 +1,4 @@
-package com.cisco.pool.manager;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.cisco.pool.config.system;
 
 import org.kohsuke.stapler.DataBoundConstructor;
 
@@ -9,18 +6,19 @@ import hudson.Extension;
 import hudson.model.AbstractDescribableImpl;
 import hudson.model.Descriptor;
 
-public class ResourcePool extends AbstractDescribableImpl<ResourcePool>{
+public class Resource extends AbstractDescribableImpl<Resource>{
 	private String name;
 	private String description;
 	private String type;
-	private List<Resource> resources = new ArrayList<Resource>();
+	private String ipAddress;
+	private boolean reserverd;
 
 	@DataBoundConstructor
-	public ResourcePool(String name, String description, String type, List<Resource> resources) {
+	public Resource(String name, String description, String type, String ipAddress) {
 		this.name = name;
 		this.description = description;
 		this.type = type;
-		this.resources = resources;
+		this.ipAddress = ipAddress;
 	}
 
 	public String getName() {
@@ -35,12 +33,20 @@ public class ResourcePool extends AbstractDescribableImpl<ResourcePool>{
 		return type;
 	}
 
-	public List<Resource> getResources() {
-		return resources;
+	public String getIpAddress() {
+		return ipAddress;
+	}
+	
+	public boolean isReserverd() {
+		return reserverd;
+	}
+
+	public void setReserverd(boolean reserverd) {
+		this.reserverd = reserverd;
 	}
 
 	@Extension
-    public static class DescriptorImpl extends Descriptor<ResourcePool> {
+    public static class DescriptorImpl extends Descriptor<Resource> {
         public String getDisplayName() { return ""; }
     }
 }

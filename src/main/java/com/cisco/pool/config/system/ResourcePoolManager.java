@@ -1,4 +1,4 @@
-package com.cisco.pool.manager;
+package com.cisco.pool.config.system;
 
 import java.util.ArrayList;
 import java.util.List;
