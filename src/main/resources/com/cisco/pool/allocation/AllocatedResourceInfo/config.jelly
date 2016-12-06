@@ -10,17 +10,11 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  -->
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define"
-	xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-	 <f:optionalBlock title="This build require Resource Pool" checked="${instance!=null}" name="required-resource-pools">
-	  <f:entry title="Pool Name" field="name">
-		  <f:repeatable field="resourcePools" header="Pool" minimum="0" add="Add Resource Pool">
-			  <table width="100%">
-				  <st:include page="config.jelly" class="com.cisco.pool.allocation.AllocatedResourceInfo"/>
-				  <f:entry title="">
-					  <div align="right"><f:repeatableDeleteButton/></div>
-				  </f:entry>
-			  </table>
-		  </f:repeatable>
-	  </f:entry>
-	</f:optionalBlock>
+         xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+    <f:entry title="${%Name}" field="name">
+        <f:textbox/>
+    </f:entry>
+    <f:entry title="${%Count}" field="count">
+        <f:textbox/>
+    </f:entry>
 </j:jelly>

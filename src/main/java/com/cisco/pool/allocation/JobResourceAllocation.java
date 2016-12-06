@@ -18,17 +18,20 @@ import hudson.model.JobPropertyDescriptor;
 import hudson.model.Descriptor.FormException;
 import net.sf.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class JobResourceAllocation extends JobProperty<Job<?,?>>{
-	private String name;
+	private List<AllocatedResourceInfo> resourcePools = new ArrayList<AllocatedResourceInfo>();
 	
 	@DataBoundConstructor
-	public  JobResourceAllocation(String name) {
+	public  JobResourceAllocation(List<AllocatedResourceInfo> resourcePools) {
 		super();
-		this.name = name;
+		this.resourcePools = resourcePools;
 	}
 
-	public String getName() {
-		return name;
+	public List<AllocatedResourceInfo> getResourcePools() {
+		return this.resourcePools;
 	}
 
 	@Extension
@@ -50,13 +53,13 @@ public class JobResourceAllocation extends JobProperty<Job<?,?>>{
 			if (formData.isNullObject()) {
 				return null;
 			}
-			JSONObject json = formData.getJSONObject("required-resources");
+			JSONObject json = formData.getJSONObject("required-resource-pools");
 			if (json.isNullObject()) {
 				return null;
 			}
-			String poolName = json.getString("name");
-			
-			return new JobResourceAllocation(poolName);
+
+			List<AllocatedResourceInfo> requiredResourcePools = req.bindJSONToList( AllocatedResourceInfo.class, json.get("resourcePools"));
+			return new JobResourceAllocation(requiredResourcePools);
 		}
 		
 		public static AutoCompletionCandidates doAutoCompleteName(@QueryParameter String value) {
