@@ -18,15 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JobResourceAllocation extends JobProperty<Job<?,?>>{
-	private List<AllocatedResourceInfo> resourcePools = new ArrayList<AllocatedResourceInfo>();
+	private List<ResourcePoolRequirement> resourcePools = new ArrayList<ResourcePoolRequirement>();
 	
 	@DataBoundConstructor
-	public  JobResourceAllocation(List<AllocatedResourceInfo> resourcePools) {
+	public  JobResourceAllocation(List<ResourcePoolRequirement> resourcePools) {
 		super();
 		this.resourcePools = resourcePools;
 	}
 
-	public List<AllocatedResourceInfo> getResourcePools() {
+	public List<ResourcePoolRequirement> getResourcePools() {
 		return this.resourcePools;
 	}
 
@@ -54,7 +54,7 @@ public class JobResourceAllocation extends JobProperty<Job<?,?>>{
 				return null;
 			}
 
-			List<AllocatedResourceInfo> requiredResourcePools = req.bindJSONToList( AllocatedResourceInfo.class, json.get("resourcePools"));
+			List<ResourcePoolRequirement> requiredResourcePools = req.bindJSONToList( ResourcePoolRequirement.class, json.get("resourcePools"));
 			return new JobResourceAllocation(requiredResourcePools);
 		}
 		

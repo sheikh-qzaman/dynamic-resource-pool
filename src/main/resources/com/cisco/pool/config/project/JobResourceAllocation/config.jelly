@@ -15,7 +15,7 @@
 	  <f:entry title="Pool Name" field="name">
 		  <f:repeatable field="resourcePools" header="Pool" minimum="0" add="Add Resource Pool">
 			  <table width="100%">
-				  <st:include page="config.jelly" class="com.cisco.pool.config.project.AllocatedResourceInfo"/>
+				  <st:include page="config.jelly" class="com.cisco.pool.config.project.ResourcePoolRequirement"/>
 				  <f:entry title="">
 					  <div align="right"><f:repeatableDeleteButton/></div>
 				  </f:entry>

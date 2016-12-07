@@ -19,6 +19,7 @@ public class Resource extends AbstractDescribableImpl<Resource>{
 		this.description = description;
 		this.type = type;
 		this.ipAddress = ipAddress;
+		this.reserverd = false;
 	}
 
 	public String getName() {

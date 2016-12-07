@@ -39,6 +39,27 @@ public class ResourcePool extends AbstractDescribableImpl<ResourcePool>{
 		return resources;
 	}
 
+	public List<Resource> getAllocateResources(int requestCount) {
+		//If resource count is less no need to further
+		if(this.resources.size() < requestCount) {
+			return null;
+		}
+		// Now need to check available resources
+		List<Resource> allocatedResources = new ArrayList<Resource>();
+		int resourceCount = 0;
+		for(Resource resource : resources) {
+			if(resourceCount == requestCount){
+				break;
+			}
+			if(! resource.isReserverd()) {
+				allocatedResources.add(resource);
+				resource.setReserverd(true);
+				resourceCount++;
+			}
+		}
+		return allocatedResources;
+	}
+
 	@Extension
     public static class DescriptorImpl extends Descriptor<ResourcePool> {
         public String getDisplayName() { return ""; }

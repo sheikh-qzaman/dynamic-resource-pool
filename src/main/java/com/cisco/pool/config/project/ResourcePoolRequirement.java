@@ -7,12 +7,12 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.Serializable;
 
-public class AllocatedResourceInfo extends AbstractDescribableImpl<AllocatedResourceInfo> implements Serializable{
+public class ResourcePoolRequirement extends AbstractDescribableImpl<ResourcePoolRequirement> implements Serializable{
     private String name;
     private int count;
 
     @DataBoundConstructor
-    public AllocatedResourceInfo(String name, int count) {
+    public ResourcePoolRequirement(String name, int count) {
         this.name = name;
         this.count = count;
     }
@@ -26,7 +26,7 @@ public class AllocatedResourceInfo extends AbstractDescribableImpl<AllocatedReso
     }
 
     @Extension
-    public static class DescriptorImpl extends Descriptor<AllocatedResourceInfo> {
+    public static class DescriptorImpl extends Descriptor<ResourcePoolRequirement> {
         public String getDisplayName() { return ""; }
     }
 }
